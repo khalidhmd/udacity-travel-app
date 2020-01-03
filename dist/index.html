@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang=en dir=ltr><head><meta charset=utf-8><title>Evaluate News App</title><link href=main.755bf9c5e35a9b2db0cf.css rel=stylesheet></head><body><main><section><form name=form class="" id=form><input id=url type=text name=url value="" placeholder=url> <input type=submit id=submit name="" value=submit></form></section><section><h2>Form Results:</h2><div><p><strong>Polarity: </strong><span id=polarity></span></p><p><strong>Subjectivity: </strong><span id=subjectivity></span></p><p><strong>Text: </strong><span id=text></span></p><p><strong>Polarity Confidence: </strong><span id=pconfidence></span></p><p><strong>Subjectivity Confidence: </strong><span id=sconfidence></span></p></div></section></main><footer><p>This is a footer</p></footer><script>// Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(() => {
+              console.log("serviceworker registered");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        });
+      }</script><script type=text/javascript src=main.135693059dbedd0ec684.bundle.js></script></body></html>
