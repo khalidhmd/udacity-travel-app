@@ -2,53 +2,50 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Evaluate News App</title>
+    <title>Travel Planner App</title>
   </head>
 
   <body>
-    <main>
-      <section>
-        <form name="form" class="" id="form">
-          <input id="url" type="text" name="url" value="" placeholder="url" />
-          <input type="submit" id="submit" name="" value="submit" />
-        </form>
-      </section>
+    <div class="container">
+      <header><h1>Travel Planner</h1></header>
+      <form>
+        <h3>Create Trip</h3>
+        <label for="date">Travel date</label
+        ><input type="date" name="date" id="date" />
+        <label for="destination">Destination</label
+        ><input type="text" name="destination" id="destination" />
+        <input type="button" value="Submit" id="submitForm" />
+      </form>
+      <main class="main">
+        <h3>Trip Preview</h3>
+        <section class="trip-preview">
+          <img src="" alt="Photo from destination" class="photo" />
+          <div class="trip-data">
+            <h3 class="my-trip-to">My Trip to:</h3>
+            <h3 class="my-trip-to">Paris, France</h3>
+            <h3 class="departing">Departing:</h3>
+            <h3 class="departing">22/10/202</h3>
+          </div>
+        </section>
 
-      <section>
-        <h2>Form Results:</h2>
-        <div>
-          <p><strong>Polarity: </strong><span id="polarity"></span></p>
-          <p><strong>Subjectivity: </strong><span id="subjectivity"></span></p>
-          <p><strong>Text: </strong><span id="text"></span></p>
-          <p>
-            <strong>Polarity Confidence: </strong><span id="pconfidence"></span>
-          </p>
-          <p>
-            <strong>Subjectivity Confidence: </strong
-            ><span id="sconfidence"></span>
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>This is a footer</p>
-    </footer>
-    <script>
-      // Check that service workers are supported
-      if ("serviceWorker" in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("service-worker.js")
-            .then(() => {
-              console.log("serviceworker registered");
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        });
-      }
-    </script>
+        <div></div>
+      </main>
+      <script>
+        // Check that service workers are supported
+        if ("serviceWorker" in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("service-worker.js")
+              .then(() => {
+                console.log("serviceworker registered");
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          });
+        }
+      </script>
+    </div>
   </body>
 </html>

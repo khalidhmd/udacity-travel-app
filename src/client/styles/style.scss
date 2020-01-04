@@ -1,5 +1,10 @@
-@import "./base.scss";
-@import "./form.scss";
-@import "./header.scss";
-@import "./main.scss";
-@import "./footer.scss";
+* {
+  padding: 0em;
+  margin: 0em;
+}
+.container {
+  background-color: #eef;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
