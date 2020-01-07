@@ -1,5 +1,3 @@
-const dotenv = require("dotenv");
-dotenv.config();
 const path = require("path");
 const express = require("express");
 
@@ -14,6 +12,6 @@ app.get("/", function(req, res) {
 });
 
 // designates what port the app will listen to for incoming requests
-app.listen(process.env.PORT || 8080, function() {
-  console.log("Example app listening on port 8080!");
+const server = app.listen(process.env.PORT || 8080, function() {
+  console.log(`Example app listening on port ${server.address().port} `);
 });

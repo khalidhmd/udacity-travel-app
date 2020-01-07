@@ -1,10 +1,86 @@
-* {
-  padding: 0em;
-  margin: 0em;
-}
 .container {
-  background-color: #eef;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  background-color: rgb(253, 218, 218);
+}
+
+input {
+  border-width: 2px;
+}
+
+input:hover {
+  border-color: crimson;
+  cursor: pointer;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.trip-preview {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.trip-data {
+  padding: 10px;
+  flex: 1;
+}
+
+.photo {
+  flex: 1;
+  padding: 10px;
+}
+
+.input-group {
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    align-items: center;
+  }
+  .form {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-header {
+    text-align: center;
+  }
+  .trip-preview {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main {
+    align-items: center;
+    width: 100%;
+    align-items: center;
+  }
+  .photo {
+    width: 90%;
+  }
+  .input-group {
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
