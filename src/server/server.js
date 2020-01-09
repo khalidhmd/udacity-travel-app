@@ -26,17 +26,38 @@ app.get("/", (req, res) => {
 
 app.get("/trip", async (req, res) => {
   await getGeoData(req.query["city"]);
-
+  await Promise.all([
+    getPixaBayData(req.query["city"]),
+    getDarkSkyData(cityData.lat, cityData.lng, req.query["date"]),
+  ]);
+  // await getPixaBayData(req.query["city"]);
+  // await getDarkSkyData(cityData.lat, cityData.lng, req.query["date"]);
   res.send(cityData);
 });
 
 const getGeoData = async city => {
-  const goeNamesdata = await axio.get(geoNamesBaseURL + city);
-  const geoData = goeNamesdata.data.geonames[0];
+  const goeNamesData = await axio.get(geoNamesBaseURL + city);
+  const geoData = goeNamesData.data.geonames[0];
   cityData.name = geoData.name;
   cityData.lat = geoData.lat;
   cityData.lng = geoData.lng;
   cityData.countryName = geoData.countryName;
+};
+
+const getPixaBayData = async city => {
+  const pixabayData = await axio.get(pixaBayBaseURL + city);
+  const pixaData = pixabayData.data.hits[0];
+  cityData.imgURL = pixaData.webformatURL;
+};
+
+const getDarkSkyData = async (lat, lng, date) => {
+  const darkskyData = await axio.get(
+    `${darkSkyBaseURL}${lat},${lng},${date}?exclude=currently,hourly,flags`,
+  );
+  const darkData = darkskyData.data.daily.data[0];
+  cityData.temperatureHigh = darkData.temperatureHigh;
+  cityData.temperatureLow = darkData.temperatureLow;
+  cityData.cloudCover = darkData.cloudCover;
 };
 
 // designates what port the app will listen to for incoming requests
