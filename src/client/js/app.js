@@ -1,22 +1,19 @@
-const polarity = document.getElementById("polarity");
-const subjectivity = document.getElementById("subjectivity");
-const text = document.getElementById("text");
-const pconfidence = document.getElementById("pconfidence");
-const sconfidence = document.getElementById("sconfidence");
-
-const renderResult = data => {
-  polarity.innerText = data.polarity;
-  subjectivity.innerText = data.subjectivity;
-  text.innerText = data.text;
-  pconfidence.innerText = data["polarity_confidence"];
-  sconfidence.innerText = data["subjectivity_confidence"];
-};
-
 const axios = require("axios");
-async function callAPI(url) {
-  const baseUrl = "http://localhost:8080/test?url=";
+const photoelement = document.getElementById("photo");
+const destOutput = document.getElementById("dest-output");
+const destOutput2 = document.getElementById("dest-output-2");
+const dateOutput = document.getElementById("date-output");
+const daysAway = document.getElementById("days-away");
+const tempHigh = document.getElementById("temp-high");
+const tempLow = document.getElementById("temp-low");
+const cloudy = document.getElementById("cloudy");
+
+async function callAPI(city, date) {
+  const baseUrl = "http://localhost:8080/trip?";
   try {
-    const response = await axios.get(`${baseUrl}${url}`);
+    const response = await axios.get(
+      `${baseUrl}city=${city}&date=${date}T00:00:00`,
+    );
     return response.data;
   } catch (err) {
     console.log(err);
@@ -24,4 +21,12 @@ async function callAPI(url) {
   }
 }
 
-export { callAPI, renderResult };
+const renderUI = data => {
+  polarity.innerText = data.polarity;
+  subjectivity.innerText = data.subjectivity;
+  text.innerText = data.text;
+  pconfidence.innerText = data["polarity_confidence"];
+  sconfidence.innerText = data["subjectivity_confidence"];
+};
+
+export { callAPI, renderUI };

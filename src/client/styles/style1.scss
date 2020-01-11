@@ -1,0 +1,55 @@
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  background-color: rgb(253, 218, 218);
+}
+
+input {
+  margin: 0.4rem 0;
+  border-width: 2px;
+}
+
+label {
+  margin: 0.4rem 0;
+}
+
+input:hover {
+  border-color: crimson;
+  cursor: pointer;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.trip-preview {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.trip-data {
+  padding: 10px;
+  flex: 1;
+}
+
+.photo {
+  flex: 1;
+  padding: 10px;
+}
+
+.input-group {
+  margin-right: 10px;
+}

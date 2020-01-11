@@ -1,16 +1,19 @@
 import { callAPI, renderResult } from "./js/app";
 import "./styles/style.scss";
 
-const urlText = document.getElementById("url");
 const form = document.getElementById("form");
+const dateElement = document.getElementById("date");
+const d = new Date();
+dateElement.value = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
-  var x = document.forms["form"]["url"].value;
-  if (x == "") {
-    alert("Url must be filled out");
+  const city = document.forms["form"]["destination"];
+  if (city.value == "") {
+    alert("You have to enter destination city");
     return false;
   }
-  const data = await callAPI(urlText.value);
-  renderResult(data);
+  const data = await callAPI(city.value, dateElement.value);
+  console.log(data);
+  // renderResult(data);
 });

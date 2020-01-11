@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static("dist"));
 
+app.get("/favicon.ico", (req, res) => res.status(204));
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/index.html"));
 });
