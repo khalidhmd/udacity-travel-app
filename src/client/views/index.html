@@ -26,14 +26,12 @@
         </form>
 
         <section class="trip-preview">
-          <img src="" alt="Photo from destination" class="photo" id="photo" />
+          <div class="photo"><img src="" alt="Photo from destination" id="photo" class="img" /></div class="photo">
           <div class="trip-data">
             <h3 class="my-trip-to">
               My Trip to: <span id="dest-output"></span>
             </h3>
-            <h3 class="departing">
-              Departing: <span id="date-output">22/10/2020</span>
-            </h3>
+            <h3 class="departing">Departing: <span id="date-output"></span></h3>
             <input type="button" value="Save trip" id="saveTrip" />
             <input type="button" value="Remove trip" id="removeTrip" />
             <p>
@@ -42,10 +40,10 @@
             </p>
             <p>Typical weather for then is:</p>
             <p>
-              High: <span id="temp-high"></span> Low:
+              High: <span id="temp-high"></span>   Low:
               <span id="temp-low"></span>
             </p>
-            <p>Mostly <span id="cloudy"></span> throughout the day</p>
+            <p><span id="cloudy"></span> throughout the day</p>
           </div>
         </section>
 
