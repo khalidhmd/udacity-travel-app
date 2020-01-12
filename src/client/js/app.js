@@ -8,12 +8,15 @@ const tempHigh = document.getElementById("temp-high");
 const tempLow = document.getElementById("temp-low");
 const cloudy = document.getElementById("cloudy");
 
+//The callAPI() function sends request to the API implemented in server.js with the city and trip date
 async function callAPI(city, date) {
   const baseUrl = "http://localhost:8080/trip?";
   try {
     const response = await axios.get(
       `${baseUrl}city=${city}&date=${date}T00:00:00`,
     );
+
+    //add the trip date to the object returned from the API
     return { ...response.data, date };
   } catch (err) {
     console.log(err);
@@ -34,6 +37,7 @@ function DaysBetween(tripDate) {
   return (start.getUTCDate() - end.getUTCDate()) / oneDay;
 }
 
+// this function converts the cloudCover value returned to user friendly text
 const getCloudCoverText = cloudCover => {
   if (cloudCover >= 0 && cloudCover < 0.1) return "Clear";
   if (cloudCover >= 0.1 && cloudCover < 0.2) return "Fair cloudy";
@@ -44,6 +48,7 @@ const getCloudCoverText = cloudCover => {
   if (cloudCover >= 0.9 && cloudCover < 1) return "Cloudy/Overcast";
 };
 
+// This function renders the trip data to the web page
 const renderUI = data => {
   destOutput.innerHTML = `${data.name}, ${data.countryName}`;
   photoElement.src = data.imgURL;
@@ -55,10 +60,12 @@ const renderUI = data => {
   cloudy.innerHTML = getCloudCoverText(data.cloudCover);
 };
 
+// event handler for saveTrip button
 const saveTrip = (e, trip) => {
   localStorage.setItem("trips", JSON.stringify(trip));
 };
 
+// event handler for removeTrip button
 const removeTrip = e => {
   localStorage.removeItem("trips");
   document.forms["form"].submit();

@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static("dist"));
 
+// prevent error when browser fetches teh favicon from the server
 app.get("/favicon.ico", (req, res) => res.status(204));
 
 app.get("/", (req, res) => {
@@ -35,6 +36,7 @@ app.get("/trip", async (req, res) => {
   res.send(cityData);
 });
 
+// This function gets the city name, country name and lat/lng values for the city and sets them to the cityData object
 const getGeoData = async city => {
   const goeNamesData = await axio.get(geoNamesBaseURL + city);
   const geoData = goeNamesData.data.geonames[0];
@@ -44,12 +46,14 @@ const getGeoData = async city => {
   cityData.countryName = geoData.countryName;
 };
 
+// This gets the image for the city
 const getPixaBayData = async city => {
   const pixabayData = await axio.get(pixaBayBaseURL + city);
   const pixaData = pixabayData.data.hits[0];
   cityData.imgURL = pixaData.webformatURL;
 };
 
+// gets weather status for the city using the lat/lng and date
 const getDarkSkyData = async (lat, lng, date) => {
   const darkskyData = await axio.get(
     `${darkSkyBaseURL}${lat},${lng},${date}?exclude=currently,hourly,flags`,
