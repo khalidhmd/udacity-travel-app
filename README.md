@@ -54,6 +54,5 @@ A great step to take with your finished project would be to deploy it! Unfortuna
 
 This project allow the user the following:
 
-## Save a trip in browser local storage
-
-## remove the trip from browser local storage
+- Save a trip in browser local storage
+- remove the trip from browser local storage
