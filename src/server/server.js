@@ -32,8 +32,6 @@ app.get("/trip", async (req, res) => {
     getPixaBayData(req.query["city"]),
     getDarkSkyData(cityData.lat, cityData.lng, req.query["date"]),
   ]);
-  // await getPixaBayData(req.query["city"]);
-  // await getDarkSkyData(cityData.lat, cityData.lng, req.query["date"]);
   res.send(cityData);
 });
 

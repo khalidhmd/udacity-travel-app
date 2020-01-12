@@ -1,8 +1,12 @@
-import { callAPI, renderUI } from "./js/app";
+import { callAPI, renderUI, saveTrip, removeTrip } from "./js/app";
 import "./styles/style.scss";
 
+let activeTrip = localStorage.getItem("trips");
+if (activeTrip) renderUI(JSON.parse(activeTrip));
 const form = document.getElementById("form");
 const dateElement = document.getElementById("date");
+const saveButton = document.getElementById("saveTrip");
+const removeButton = document.getElementById("removeTrip");
 const d = new Date();
 dateElement.value =
   d.getMonth() < 10
@@ -17,6 +21,15 @@ form.addEventListener("submit", async event => {
     return false;
   }
   const data = await callAPI(city.value, dateElement.value);
-  console.log(data);
+  activeTrip = { ...data };
   renderUI(data);
+  saveButton.disabled = false;
+});
+
+saveButton.addEventListener("click", e => {
+  saveTrip(e, activeTrip);
+});
+
+removeButton.addEventListener("click", e => {
+  removeTrip(e);
 });

@@ -55,4 +55,13 @@ const renderUI = data => {
   cloudy.innerHTML = getCloudCoverText(data.cloudCover);
 };
 
-export { callAPI, renderUI };
+const saveTrip = (e, trip) => {
+  localStorage.setItem("trips", JSON.stringify(trip));
+};
+
+const removeTrip = e => {
+  localStorage.removeItem("trips");
+  document.forms["form"].submit();
+};
+
+export { callAPI, renderUI, saveTrip, removeTrip };
