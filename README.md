@@ -26,6 +26,10 @@ To start development Server:
 
 - `npm run dev-serve`
 
+To run the tests:
+
+- `npm run test`
+
 ## Step 3: Start the local server
 
 You can start the local server as by running the following command
