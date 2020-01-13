@@ -57,4 +57,7 @@ This project allow the user the following:
 - Save a trip in browser local storage
 - Remove the trip from browser local storage
 
-The saved trips are stored in the browswer local storage not on teh surver. There is a function that loads the saved trips into an array in the index.js of client app.
+The saved trip are stored in the browswer local storage not on the surver.
+On application start or page refresh, the application loads the trip data from browser local storage and render the trip data on the page.
+When "Save trip" button is pressed, the trip data is saved to the browser local storage.
+When the "remove trip" button is pressed, the trip data is cleared from browser local storage and the page is refreshed and trip data is no longer displayed.
