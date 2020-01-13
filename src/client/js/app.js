@@ -29,12 +29,18 @@ function DaysBetween(tripDate) {
   const oneDay = 1000 * 60 * 60 * 24;
 
   // A day in UTC always lasts 24 hours (unlike in other time formats)
-  const start = new Date();
-  const end = new Date(tripDate);
 
+  const end = new Date(tripDate);
+  const d = new Date();
+  const start = new Date(
+    d.getMonth() < 10
+      ? `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
+      : `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
+  );
+  console.log(tripDate);
   // so it's safe to divide by 24 hours
 
-  return (start.getUTCDate() - end.getUTCDate()) / oneDay;
+  return Math.floor((end.getTime() - start.getTime()) / oneDay);
 }
 
 // this function converts the cloudCover value returned to user friendly text
