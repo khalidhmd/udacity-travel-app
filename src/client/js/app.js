@@ -37,7 +37,7 @@ function DaysBetween(tripDate) {
       ? `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
       : `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
   );
-  console.log(tripDate);
+
   // so it's safe to divide by 24 hours
 
   return Math.floor((end.getTime() - start.getTime()) / oneDay);
@@ -69,12 +69,14 @@ const renderUI = data => {
 // event handler for saveTrip button
 const saveTrip = (e, trip) => {
   localStorage.setItem("trips", JSON.stringify(trip));
+  alert("Trip is saved to the browser local storage!");
 };
 
 // event handler for removeTrip button
 const removeTrip = e => {
   localStorage.removeItem("trips");
   document.forms["form"].submit();
+  alert("Trip is removed from the browser local storage!");
 };
 
 export { callAPI, renderUI, saveTrip, removeTrip };

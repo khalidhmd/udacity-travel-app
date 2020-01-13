@@ -55,4 +55,6 @@ A great step to take with your finished project would be to deploy it! Unfortuna
 This project allow the user the following:
 
 - Save a trip in browser local storage
-- remove the trip from browser local storage
+- Remove the trip from browser local storage
+
+The saved trips are stored in the browswer local storage not on teh surver. There is a function that loads the saved trips into an array in the index.js of client app.
